@@ -264,6 +264,7 @@
     <property name="LombokPluginIS_LOMBOK_VERSION_CHECK_Enabled" value="false" />
     <property name="LombokPluginIS_MISSING_LOMBOK_CHECK_Enabled" value="true" />
     <property name="LombokPluginIS_VAL_Enabled" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="aspect.path.notification.shown" value="true" />
