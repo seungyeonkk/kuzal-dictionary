@@ -4,6 +4,7 @@ import styled from "styled-components/native";
 import axios from "axios";
 import WordView from "../components/detail/WordView";
 import DataView from "../components/detail/DataView";
+import Footer from "../components/Footer";
 
 
 const Container = styled.SafeAreaView`
@@ -20,6 +21,7 @@ const search = async (word) => {
 const Detail = ({route}) => {
 
     const word = route.params.word;
+    search(word);
 
     return (
         <Container>
@@ -28,6 +30,9 @@ const Detail = ({route}) => {
             </View>
             <View style={styles.dataContainer}>
                <DataView/>
+            </View>
+            <View style={styles.footer}>
+                <Footer/>
             </View>
         </Container>
     );
@@ -43,6 +48,11 @@ const styles = StyleSheet.create({
     dataContainer: {
         flex: 6,
     },
+
+    footer:{
+        flex:1,
+        backgroundColor: '#eee'
+    }
 });
 
 export default Detail;
