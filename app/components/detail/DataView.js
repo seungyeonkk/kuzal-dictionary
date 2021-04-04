@@ -1,8 +1,9 @@
 import React from 'react';
 import {StyleSheet, Text, View, ScrollView} from 'react-native';
 
-const DataView = () => {
+const DataView = ({wordInfo}) => {
 
+    //console.log('word : ',wordInfo[0].word);
     return(
         <View style={styles.dataView}>
             <ScrollView>
