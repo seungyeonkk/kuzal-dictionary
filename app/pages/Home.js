@@ -46,7 +46,7 @@ const Home = ({ navigation }) => {
                 <ViewContent>
                     <InputView>
                         <SearchInput
-                            placeholder="Search"
+                            placeholder="검색어 입력"
                             value={word}
                             onSubmitEditing={movePage}
                             onChangeText={handleTextChange}

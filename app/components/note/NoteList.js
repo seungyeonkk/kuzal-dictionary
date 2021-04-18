@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from "styled-components/native";
-import {TouchableHighlight, Text, View, Button, FlatList} from "react-native";
-import { AntDesign } from '@expo/vector-icons';
-import {theme} from "../../style/theme";
+import {TouchableHighlight} from "react-native";
+import IconButton from "../detail/IconButton";
 
 const StyledFlatList = styled.FlatList`
     width: 100%;
@@ -24,7 +23,7 @@ const ItemIcon = styled.Text`
      text-align:right;
   `;
 
-const NoteList = ({ items, onPress }) => {
+const NoteList = ({ items, onPress, onRemove }) => {
 
     const renderItem = (item, index, separators) => {
 
@@ -36,15 +35,17 @@ const NoteList = ({ items, onPress }) => {
             <ItemView>
                 <ItemText>{item.text}</ItemText>
                 <ItemIcon>
-                    <AntDesign name="right" size={24} color={theme.white}></AntDesign>
+                    <IconButton name="trash-outline" size={25} onPressOut={() => {
+                        onRemove(item.id)
+                    }}/>
                 </ItemIcon>
             </ItemView>
         </TouchableHighlight>
     }
 
-    return <StyledFlatList
-            data={items} renderItem={({ item, index, separators }) => renderItem(item, index, separators)}
-        />
-    };
+    return (
+       <StyledFlatList data={items} renderItem={({ item, index, separators }) => renderItem(item, index, separators)}/>
+    )
+};
 
 export default NoteList;

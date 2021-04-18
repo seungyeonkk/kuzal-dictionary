@@ -67,7 +67,7 @@ const WordView = ({wordInfo}) => {
         <View style={styles.textView}>
             <View style={styles.wordView}>
                 <Text style={styles.word}>{wordInfo[0]? wordInfo[0].word : ''}</Text>
-                <IconButton name="checkmark" size={30} onPressOut={saveWord}></IconButton>
+                <IconButton name="checkmark" size={25} onPressOut={saveWord}></IconButton>
             </View>
             <View style={styles.pronunciationView}>
                 <Text>[{wordInfo[0] ? wordInfo[0].phonetics[0].text.replace(/\//gi,"") : ''}]</Text>

@@ -5,17 +5,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b632335-045b-4f5a-af71-7c8db6982821" name="Default Changelist" comment="add async-storage">
-      <change afterPath="$PROJECT_DIR$/app/components/detail/IconButton.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/utils/Common.js" afterDir="false" />
+    <list default="true" id="9b632335-045b-4f5a-af71-7c8db6982821" name="Default Changelist" comment="add common.js, IconButton.js and fix Note.js">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/detail/WordView.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/detail/WordView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/home/HomeHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/home/HomeHeader.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/note/NoteList.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/note/NoteList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/pages/Detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/pages/Detail.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/pages/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/pages/Home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/pages/Note.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/pages/Note.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setting/setting.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/setting.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +119,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618708678593</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add common.js, IconButton.js and fix Note.js">
+      <created>1618715912602</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1618715912602</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView">
@@ -144,7 +147,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add note and header component" />
     <MESSAGE value="add async-storage" />
-    <option name="LAST_COMMIT_MESSAGE" value="add async-storage" />
+    <MESSAGE value="add common.js, IconButton.js and fix Note.js" />
+    <option name="LAST_COMMIT_MESSAGE" value="add common.js, IconButton.js and fix Note.js" />
   </component>
   <component name="WindowStateProjectService">
     <state x="100" y="100" width="1480" height="850" key="DiffContextDialog" timestamp="1618708210905">
@@ -159,10 +163,10 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="485" y="233" key="VCS.ChangeListViewerDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1618708204846" />
-    <state x="440" y="262" key="Vcs.Push.Dialog.v2" timestamp="1618711897129">
+    <state x="440" y="262" key="Vcs.Push.Dialog.v2" timestamp="1618715919204">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="440" y="262" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1618711897129" />
+    <state x="440" y="262" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1618715919204" />
     <state x="200" y="58" width="1480" height="850" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1618708210905">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>

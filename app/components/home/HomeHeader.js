@@ -2,6 +2,7 @@ import React from 'react';
 import styled from "styled-components/native";
 import {Text, Button} from "react-native";
 import {theme} from "../../style/theme";
+import IconButton from "../detail/IconButton";
 
 const HeaderView = styled.View`
     flex: 1;
@@ -16,7 +17,7 @@ const HeaderView = styled.View`
 const HomeHeader = ({ onPress }) => {
 
     return <HeaderView>
-            <Button title="Note" color={theme.purple} onPress={onPress} />
+            <IconButton name="document-text-outline" size={30} onPressOut={onPress}/>
         </HeaderView>
     };
 
