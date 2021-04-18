@@ -4,6 +4,7 @@ import SearchInput from '../components/SearchInput';
 import {TouchableWithoutFeedback, Keyboard} from "react-native";
 import HomeHeader from "../components/home/HomeHeader";
 
+
 const Container = styled.SafeAreaView`
     flex: 1;
     background-color: ${({ theme }) => theme.background};

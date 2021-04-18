@@ -1,7 +1,10 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons'
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
-import {Audio} from 'expo-av'
+import {StyleSheet, Text, View, TouchableOpacity, Alert} from 'react-native';
+import {Audio} from 'expo-av';
+import IconButton from "./IconButton";
+import Common from "../../utils/Common";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const WordView = ({wordInfo}) => {
 
@@ -22,11 +25,49 @@ const WordView = ({wordInfo}) => {
         }
     }
 
+    const saveWord = async () => {
+
+        const saveData = {
+            id: Common.getCurrentMilleSeconds(),
+            text: wordInfo[0].word,
+            data: wordInfo
+        }
+
+        try {
+            const savedWords = JSON.parse(await AsyncStorage.getItem('words'));
+
+            if(savedWords == null) {
+                const words = [];
+                words.push(saveData);
+                await AsyncStorage.setItem('words', JSON.stringify(words));
+            }else {
+
+                savedWords.push(saveData);
+
+                const removeDuplicatedWords = savedWords.filter(
+                    (item, index, callback) => index === callback.findIndex(t => t.text === item.text)
+                );
+
+                await AsyncStorage.setItem('words', JSON.stringify(removeDuplicatedWords));
+            }
+            Alert.alert(
+                "알림",
+                "단어장에 저장했습니다. 열공 하세요~",
+                [
+                    { text: "확인" }
+                ],
+                { cancelable: false }
+            );
+        } catch(e) {
+            console.log(error, e);
+        }
+    }
+
     return(
         <View style={styles.textView}>
             <View style={styles.wordView}>
                 <Text style={styles.word}>{wordInfo[0]? wordInfo[0].word : ''}</Text>
-                <Icon name="bookmark-outline" size={20}/>
+                <IconButton name="checkmark" size={30} onPressOut={saveWord}></IconButton>
             </View>
             <View style={styles.pronunciationView}>
                 <Text>[{wordInfo[0] ? wordInfo[0].phonetics[0].text.replace(/\//gi,"") : ''}]</Text>
@@ -35,7 +76,7 @@ const WordView = ({wordInfo}) => {
                 }>
                     <Icon style={styles.pronunciationIcon} name="caret-forward-circle-outline" size={20} />
                 </TouchableOpacity>
-                 </View>
+            </View>
         </View>
     )
 };

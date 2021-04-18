@@ -24,17 +24,17 @@ const ItemIcon = styled.Text`
      text-align:right;
   `;
 
-const NoteList = ({ items }) => {
+const NoteList = ({ items, onPress }) => {
 
     const renderItem = (item, index, separators) => {
 
         return <TouchableHighlight
-            key={item.key}
-            onPress={() => this._onPress(item)}
+            key={item.text}
+            onPress={() => onPress(item.text)}
             onShowUnderlay={separators.highlight}
             onHideUnderlay={separators.unhighlight}>
             <ItemView>
-                <ItemText>{item.key}</ItemText>
+                <ItemText>{item.text}</ItemText>
                 <ItemIcon>
                     <AntDesign name="right" size={24} color={theme.white}></AntDesign>
                 </ItemIcon>

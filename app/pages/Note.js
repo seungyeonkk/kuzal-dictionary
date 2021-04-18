@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import styled from "styled-components/native";
 import {Button, Text, FlatList} from "react-native";
 import {theme} from "../style/theme";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import NoteList from "../components/note/NoteList";
+import axios from "axios";
 
 
 const Container = styled.View`
@@ -13,46 +14,26 @@ const Container = styled.View`
     justify-content: center;
   `;
 
-const Note = () => {
+const Note = ({ navigation }) => {
 
-    const storeData = async (value) => {
-        try {
-            await AsyncStorage.setItem('test', value)
-            console.log("success")
-        } catch (e) {
-            console.log(e);
+    const [words, setWords] = useState([]);
+
+    useEffect(() => {
+        async function getData(word){
+            const savedWords = JSON.parse(await AsyncStorage.getItem('words'));
+            setWords(savedWords);
         }
-    }
+        getData();
+    }, []);
 
-    const saveData = () => {
-        storeData('This is test');
-    }
-
-    const getData = async () => {
-        try {
-            const value = await AsyncStorage.getItem('test')
-            if(value !== null) {
-                // value previously stored
-                 console.log("확인 ==>", value);
-            }
-        } catch(e) {
-            console.log(e);
-        }
+    const moveDetail = (word) => {
+        navigation.navigate('Detail', {word: word});
     }
 
 
     return (
         <Container>
-            <NoteList items={[ { key: 'Devin' },
-                { key: 'Dan' },
-                { key: 'Dominic' },
-                { key: 'Jackson' },
-                { key: 'James' },
-                { key: 'Joel' },
-                { key: 'John' },
-                { key: 'Jillian' },
-                { key: 'Jimmy' },
-                { key: 'Julie' },]}></NoteList>
+            <NoteList items={words} onPress={moveDetail}></NoteList>
         </Container>
     );
 }

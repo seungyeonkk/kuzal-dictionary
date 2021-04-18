@@ -1,5 +1,4 @@
 import {StyleSheet, Text, View} from "react-native";
-
 import React,{useState, useEffect} from "react";
 import styled from "styled-components/native";
 import axios from "axios";
@@ -21,7 +20,6 @@ const Detail = ({route}) => {
          async function search(word){
             const data = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en_US/` + word);
             setWordInfo(data.data);
-            console.log(data.data);
         }
         search(word);
 

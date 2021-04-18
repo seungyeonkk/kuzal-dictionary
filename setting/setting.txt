@@ -11,9 +11,11 @@
 참고: https://react-native-async-storage.github.io/async-storage/docs/usage/
  > npm install --save @react-native-async-storage/async-storage
  - 단어장 데이터구조
- "단어" : {
-    seq : date millisecond,
-    datas: [{}]
+ - "words" : [{}, {}, ...]
+ {
+    id : date millisecond,
+    text: "검색어",
+    datas: [{}] // return data
  }
 
 4. 아이콘 사용
