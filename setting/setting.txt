@@ -9,7 +9,7 @@
 
 3. async storage 설정
 참고: https://react-native-async-storage.github.io/async-storage/docs/usage/
- > npm install @react-native-async-storage/async-storage
+ > npm install --save @react-native-async-storage/async-storage
  - 단어장 데이터구조
  "단어" : {
     seq : date millisecond,
