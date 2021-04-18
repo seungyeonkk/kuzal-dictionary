@@ -1,5 +1,5 @@
 1. navigation 설정
-참고 : https://reactnavigation.org/docs/getting-started/
+참고: https://reactnavigation.org/docs/getting-started/
  > npm install @react-navigation/native
  > expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
  > npm install @react-navigation/stack
@@ -7,3 +7,18 @@
 2. styled-components 설정
  > npm install styled-components
 
+3. async storage 설정
+참고: https://react-native-async-storage.github.io/async-storage/docs/usage/
+ > npm install @react-native-async-storage/async-storage
+ - 단어장 데이터구조
+ "단어" : {
+    seq : date millisecond,
+    datas: [{}]
+ }
+
+4. 아이콘 사용
+ > npm install --save react-native-vector-icons
+
+
+5. 사운드 사용
+ > expo install expo-av

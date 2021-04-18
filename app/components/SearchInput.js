@@ -5,11 +5,9 @@ import {theme} from "../style/theme";
 const StyledInput = styled.TextInput.attrs({
   placeholderTextColor: theme.white
 })`
-    width: 80%;
+    width: 90%;
     height: 40px;
-    border: 1px;
-    border-color: ${({ theme }) => theme.white};
-    font-size: 12px;
+    font-size: 20px;
     padding-left: 15px;
     color: ${({ theme }) => theme.white};
 `;

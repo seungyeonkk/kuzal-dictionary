@@ -1,8 +1,9 @@
 import React from 'react';
 import {createStackNavigator} from "@react-navigation/stack";
+import { theme } from "../style/theme";
 import Home from "../pages/Home";
 import Detail from "../pages/Detail";
-import { theme } from "../style/theme";
+import Note from "../pages/Note";
 
 
 const Stack = createStackNavigator();
@@ -14,12 +15,28 @@ const StackNavigation = () => {
                 height: 100,
                 backgroundColor: theme.background,
             },
+            headerTitleAlign: "center",
             headerTitleStyle: {
                 color: theme.white
             }
         }}>
-            <Stack.Screen name="Home" component={Home}/>
-            <Stack.Screen name="Detail" component={Detail}/>
+            <Stack.Screen name="Home" component={Home}
+                options={{
+                    headerShown: false
+                }}
+            />
+            <Stack.Screen name="Detail" component={Detail}
+                options={{
+                    headerBackTitleVisible: false,
+                    headerTintColor: theme.white
+              }}
+            />
+            <Stack.Screen name="Note" component={Note}
+                options={{
+                    headerBackTitleVisible: false,
+                    headerTintColor: theme.white
+              }}
+            />
         </Stack.Navigator>
     );
 };
