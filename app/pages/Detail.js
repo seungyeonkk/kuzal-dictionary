@@ -75,19 +75,18 @@ const Detail = ({route, navigation}) => {
     return (
         <Container>
             <View style={styles.wordContainer}>
-                <DetailSearchInput
-                    placeholder="검색어 입력"
-                    value={searchText}
-                    onSubmitEditing={async ()=> {
-                        const data = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en_US/` + searchText);
-                        setWordInfos(data.data);
-                    }}
-                    onChangeText={(text)=> {
-                        setSearchText(text);
-                    }}
-                />
                 <View style={styles.topContainer}>
-                    <Text style={styles.titleText}>{searchText}</Text>
+                    <DetailSearchInput
+                        placeholder="검색어 입력"
+                        value={searchText}
+                        onSubmitEditing={async ()=> {
+                            const data = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en_US/` + searchText);
+                            setWordInfos(data.data);
+                        }}
+                        onChangeText={(text)=> {
+                            setSearchText(text);
+                        }}
+                    />
                     <IconButton style={styles.saveIcon} name="checkmark" size={30} onPressOut={saveWord}/>
                 </View>
 
@@ -123,8 +122,10 @@ const styles = StyleSheet.create({
     },
 
     topContainer: {
+
         marginTop: 5,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        alignItems: 'center'
     },
 
     footer:{

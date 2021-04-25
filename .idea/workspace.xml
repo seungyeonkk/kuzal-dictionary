@@ -16,16 +16,12 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b632335-045b-4f5a-af71-7c8db6982821" name="Default Changelist" comment="add to remove word">
-      <change afterPath="$PROJECT_DIR$/app/components/detail/DetailSearchInput.js" afterDir="false" />
+    <list default="true" id="9b632335-045b-4f5a-af71-7c8db6982821" name="Default Changelist" comment="fix detail view">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/detail/DataView.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/detail/DataView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/detail/DefinitionView.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/detail/DefinitionView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/detail/MeaningView.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/detail/MeaningView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/detail/SynonymsView.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/detail/SynonymsView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/detail/DetailSearchInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/detail/DetailSearchInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/navigations/Stack.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/navigations/Stack.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/pages/Detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/pages/Detail.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/style/theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/style/theme.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +121,7 @@
       <option name="presentableId" value="Default" />
       <updated>1615517361957</updated>
       <workItem from="1615517363316" duration="16592000" />
-      <workItem from="1619311132626" duration="16316000" />
+      <workItem from="1619311132626" duration="17476000" />
     </task>
     <task id="LOCAL-00001" summary="add note and header component">
       <created>1618708306336</created>
@@ -155,7 +151,21 @@
       <option name="project" value="LOCAL" />
       <updated>1618728024492</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fix detail view">
+      <created>1619329460611</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1619329460611</updated>
+    </task>
+    <task id="LOCAL-00006" summary="fix detail view">
+      <created>1619329468652</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1619329468652</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView">
@@ -231,7 +241,8 @@
     <MESSAGE value="add async-storage" />
     <MESSAGE value="add common.js, IconButton.js and fix Note.js" />
     <MESSAGE value="add to remove word" />
-    <option name="LAST_COMMIT_MESSAGE" value="add to remove word" />
+    <MESSAGE value="fix detail view" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix detail view" />
   </component>
   <component name="WindowStateProjectService">
     <state x="304" y="184" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1619316866517">
@@ -250,10 +261,10 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="485" y="233" key="VCS.ChangeListViewerDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1619325584262" />
-    <state x="440" y="262" key="Vcs.Push.Dialog.v2" timestamp="1618728030339">
+    <state x="440" y="262" key="Vcs.Push.Dialog.v2" timestamp="1619329598287">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="440" y="262" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1618728030339" />
+    <state x="440" y="262" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1619329598287" />
     <state x="200" y="58" width="1480" height="850" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1618708210905">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -262,10 +273,10 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="81" y="78" width="1480" height="850" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1619326019267" />
-    <state x="507" y="317" key="git4idea.merge.GitPullDialog" timestamp="1619311242066">
+    <state x="507" y="317" key="git4idea.merge.GitPullDialog" timestamp="1619330365892">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="507" y="317" key="git4idea.merge.GitPullDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1619311242066" />
+    <state x="507" y="317" key="git4idea.merge.GitPullDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1619330365892" />
     <state x="521" y="375" key="git4idea.ui.GitUnstashDialog" timestamp="1619325587231">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>

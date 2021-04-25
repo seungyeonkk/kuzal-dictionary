@@ -28,13 +28,15 @@ const StackNavigation = () => {
             <Stack.Screen name="Detail" component={Detail}
                 options={{
                     headerBackTitleVisible: false,
-                    headerTintColor: theme.white
+                    headerTintColor: theme.white,
+                    title: ""
               }}
             />
             <Stack.Screen name="Note" component={Note}
                 options={{
                     headerBackTitleVisible: false,
-                    headerTintColor: theme.white
+                    headerTintColor: theme.white,
+                    title: ""
               }}
             />
         </Stack.Navigator>

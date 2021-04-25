@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {StyleSheet, Text, View, ScrollView} from 'react-native';
 import {
     AdMobBanner,
-    setTestDeviceIDAsync,
+    setTestDeviceIDAsync
 } from 'expo-ads-admob';
 
 

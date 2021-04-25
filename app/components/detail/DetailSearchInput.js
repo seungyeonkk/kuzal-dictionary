@@ -9,17 +9,16 @@ import {StyleSheet} from "react-native";
 
 const StyledSearchInput = styled.TextInput.attrs({
   placeholderTextColor: theme.white
-})`
-    flex:9
+})` 
+    width:100%;
     height: 40px;
     font-size: 20px;
     padding-left: 15px;
-    color: ${({ theme }) => theme.white};
+    color: ${({ theme }) => theme.purple};
 `;
 
 const StyledView = styled.View`
-  flex-direction: row;
-  align-items: center;
+  flex: 1;
   border-bottom-width: 1px;
   border-color: ${({ theme }) => theme.grey};
 `;
@@ -28,7 +27,7 @@ const StyledView = styled.View`
 const DetailSearchInput = ({ placeholder, value, onChangeText, onSubmitEditing }) => {
 
   return (
-    <StyledView>
+      <StyledView>
         <StyledSearchInput
             placeholder={placeholder}
             maxLength={30}
@@ -38,16 +37,11 @@ const DetailSearchInput = ({ placeholder, value, onChangeText, onSubmitEditing }
             onChangeText={onChangeText}
             onSubmitEditing={onSubmitEditing}
         />
-        <Icon style={styles.searchIcon} name="ios-search-outline" size={20} color={theme.white}></Icon>
-    </StyledView>
+      </StyledView>
   )
 };
 
 const styles = StyleSheet.create({
-
-    searchIcon: {
-        flex: 1
-    }
 
 });
 
