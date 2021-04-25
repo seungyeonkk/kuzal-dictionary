@@ -40,9 +40,9 @@ const DataView = ({wordInfo}) => {
                     <Text style={styles.word}>{wordInfo ? wordInfo.word : ''}</Text>
                 </View>
                 <View style={styles.pronunciationView}>
-                    <Text style={styles.pronunciationText}>[{wordInfo ? wordInfo.phonetics[0].text.replace(/\//gi, "") : ''}]</Text>
+                    <Text style={styles.pronunciationText}>[{wordInfo.phonetics[0] ? wordInfo.phonetics[0].text.replace(/\//gi, "") : ''}]</Text>
                     <TouchableOpacity onPress={() =>
-                        playSound(wordInfo ? wordInfo.phonetics[0].audio : '')
+                        playSound(wordInfo.phonetics[0] ? wordInfo.phonetics[0].audio : '')
                     }>
                         <Icon style={styles.pronunciationIcon} name="caret-forward-circle-outline" size={25}/>
                     </TouchableOpacity>
