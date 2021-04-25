@@ -1,129 +1,88 @@
-import React from 'react';
-import {StyleSheet, Text, View, ScrollView} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {StyleSheet, Text, View, ScrollView, TouchableOpacity} from 'react-native';
+import {Audio} from "expo-av";
+import Icon from "react-native-vector-icons/Ionicons";
+import MeaningView from "./MeaningView"
+import axios from "axios";
 
 const DataView = ({wordInfo}) => {
+    const [meaningInfos, setMeaningInfos] = useState([]);
+    console.log('wordInfo : ',wordInfo);
 
-    //console.log('word : ',wordInfo[0].word);
-    return(
-        <View style={styles.dataView}>
-            <ScrollView>
+    useEffect(() => {
+        setMeaningInfos(wordInfo.meanings);
+    }, []);
 
-                <View style={styles.dataSet}>
-                    <View style={styles.wordClassView}>
-                        <Text style={styles.wordClass}>noun</Text>
-                    </View>
-                    <View style={styles.meaningView}>
-                        <Text style={styles.meaning}>An utternce of 'hello'; a greeting</Text>
-                    </View>
-                    <View style={styles.exampleView}>
-                        <Text style={styles.example}>'she was greeting polite nods and hellos from people'</Text>
-                    </View>
-                    <View style={styles.synonymsView}>
-                        <Text style={styles.synonyms}>Synonyms: </Text>
-                    </View>
+    async function playSound(mp3file) {
+        console.log('sound: ', mp3file);
+
+        if (mp3file) {
+            const sound = new Audio.Sound();
+            try {
+                await sound.unloadAsync();
+                await sound.loadAsync({uri: mp3file});
+                await sound.playAsync();
+                //
+            } catch (error) {
+                log.error('error : ', error);
+            }
+
+        }
+    }
+    return (
+        <View>
+            <View style={styles.textView}>
+                <View style={styles.wordView}>
+                    <Text style={styles.word}>{wordInfo ? wordInfo.word : ''}</Text>
                 </View>
-
-                <View style={styles.dataSet}>
-                    <View style={styles.wordClassView}>
-                        <Text style={styles.wordClass}>noun</Text>
-                    </View>
-                    <View style={styles.meaningView}>
-                        <Text style={styles.meaning}>An utternce of 'hello'; a greeting</Text>
-                    </View>
-                    <View style={styles.exampleView}>
-                        <Text style={styles.example}>'she was greeting polite nods and hellos from people'</Text>
-                    </View>
-                    <View style={styles.synonymsView}>
-                        <Text style={styles.synonyms}>Synonyms: </Text>
-                    </View>
+                <View style={styles.pronunciationView}>
+                    <Text>[{wordInfo ? wordInfo.phonetics[0].text.replace(/\//gi, "") : ''}]</Text>
+                    <TouchableOpacity onPress={() =>
+                        playSound(wordInfo ? wordInfo.phonetics[0].audio : '')
+                    }>
+                        <Icon style={styles.pronunciationIcon} name="caret-forward-circle-outline" size={20}/>
+                    </TouchableOpacity>
                 </View>
+            </View>
 
-                <View style={styles.dataSet}>
-                    <View style={styles.wordClassView}>
-                        <Text style={styles.wordClass}>noun</Text>
-                    </View>
-                    <View style={styles.meaningView}>
-                        <Text style={styles.meaning}>An utternce of 'hello'; a greeting</Text>
-                    </View>
-                    <View style={styles.exampleView}>
-                        <Text style={styles.example}>'she was greeting polite nods and hellos from people'</Text>
-                    </View>
-                    <View style={styles.synonymsView}>
-                        <Text style={styles.synonyms}>Synonyms: </Text>
-                    </View>
-                </View>
-
-                <View style={styles.dataSet}>
-                    <View style={styles.wordClassView}>
-                        <Text style={styles.wordClass}>noun</Text>
-                    </View>
-                    <View style={styles.meaningView}>
-                        <Text style={styles.meaning}>An utternce of 'hello'; a greeting</Text>
-                    </View>
-                    <View style={styles.exampleView}>
-                        <Text style={styles.example}>'she was greeting polite nods and hellos from people'</Text>
-                    </View>
-                    <View style={styles.synonymsView}>
-                        <Text style={styles.synonyms}>Synonyms: </Text>
-                    </View>
-                </View>
-
-                <View style={styles.dataSet}>
-                    <View style={styles.wordClassView}>
-                        <Text style={styles.wordClass}>noun</Text>
-                    </View>
-                    <View style={styles.meaningView}>
-                        <Text style={styles.meaning}>An utternce of 'hello'; a greeting</Text>
-                    </View>
-                    <View style={styles.exampleView}>
-                        <Text style={styles.example}>'she was greeting polite nods and hellos from people'</Text>
-                    </View>
-                    <View style={styles.synonymsView}>
-                        <Text style={styles.synonyms}>Synonyms: </Text>
-                    </View>
-                </View>
-
-                <View style={styles.dataSet}>
-                    <View style={styles.wordClassView}>
-                        <Text style={styles.wordClass}>noun</Text>
-                    </View>
-                    <View style={styles.meaningView}>
-                        <Text style={styles.meaning}>An utternce of 'hello'; a greeting</Text>
-                    </View>
-                    <View style={styles.exampleView}>
-                        <Text style={styles.example}>'she was greeting polite nods and hellos from people'</Text>
-                    </View>
-                    <View style={styles.synonymsView}>
-                        <Text style={styles.synonyms}>Synonyms: </Text>
-                    </View>
-                </View>
-
-                <View style={styles.dataSet}>
-                    <View style={styles.wordClassView}>
-                        <Text style={styles.wordClass}>noun</Text>
-                    </View>
-                    <View style={styles.meaningView}>
-                        <Text style={styles.meaning}>An utternce of 'hello'; a greeting</Text>
-                    </View>
-                    <View style={styles.exampleView}>
-                        <Text style={styles.example}>'she was greeting polite nods and hellos from people'</Text>
-                    </View>
-                    <View style={styles.synonymsView}>
-                        <Text style={styles.synonyms}>Synonyms: </Text>
-                    </View>
-                </View>
-
-            </ScrollView>
+            {meaningInfos.map((meainingInfo) => (
+                <MeaningView meainingInfo={meainingInfo}/>
+            ))}
         </View>
     )
-
 };
-
 
 
 const styles = StyleSheet.create({
 
+    textView: {
+        flex: 1,
+        backgroundColor: '#eee',
+        borderBottomColor: 'black',
+        borderBottomWidth: 1,
+    },
 
+    wordView: {
+        flex: 1,
+        margin: 10,
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+
+    pronunciationView: {
+        flex: 1,
+        margin: 10,
+        flexDirection: 'row'
+    },
+
+    word: {
+        fontSize: 20,
+        fontWeight: "bold"
+    },
+
+    pronunciationIcon: {
+        marginLeft: 2
+    },
     dataView: {
         flex: 6,
         backgroundColor: '#6ED4C8'
@@ -132,48 +91,7 @@ const styles = StyleSheet.create({
     wordClassView: {
         backgroundColor: '#eee',
 
-    },
-    wordClass: {
-        fontSize: 20,
-        marginTop: 10,
-        marginLeft: 10
-    },
-
-    meaningView: {
-        backgroundColor: '#fff',
-    },
-
-    meaning: {
-        fontSize: 10,
-        marginTop: 3,
-        marginLeft: 10
-    },
-
-    exampleView: {
-        backgroundColor: '#eee',
-    },
-
-    example: {
-        fontSize: 10,
-        color: '#665852',
-        marginTop: 3,
-        marginLeft: 10
-
-    },
-
-    synonymsView: {
-        backgroundColor: '#fff',
-    },
-
-    synonyms: {
-        fontSize: 10,
-        marginTop: 3,
-        marginLeft: 10
-    },
-
-    dataSet: {
-        marginTop: 20
-    },
+    }
 
 });
 

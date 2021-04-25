@@ -1,8 +1,7 @@
-import {StyleSheet, Text, View} from "react-native";
+import {ScrollView, StyleSheet, Text, View} from "react-native";
 import React,{useState, useEffect} from "react";
 import styled from "styled-components/native";
 import axios from "axios";
-import WordView from "../components/detail/WordView";
 import DataView from "../components/detail/DataView";
 import Footer from "../components/Footer";
 
@@ -14,12 +13,13 @@ const Container = styled.SafeAreaView`
 
 const Detail = ({route}) => {
     const word = route.params.word;
-    const [wordInfo, setWordInfo] = useState('');
-
+    const [wordInfos, setWordInfos] = useState([]);
     useEffect(() => {
+
          async function search(word){
             const data = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en_US/` + word);
-            setWordInfo(data.data);
+            setWordInfos(data.data);
+
         }
         search(word);
 
@@ -28,10 +28,14 @@ const Detail = ({route}) => {
     return (
         <Container>
             <View style={styles.wordContainer}>
-                <WordView wordInfo={wordInfo}/>
+                <Text> {word} </Text>
             </View>
             <View style={styles.dataContainer}>
-               <DataView wordInfo={wordInfo}/>
+                <ScrollView>
+                {wordInfos.map((wordInfo)=> (
+                    <DataView wordInfo={wordInfo}/>
+                ))}
+                </ScrollView>
             </View>
             <View style={styles.footer}>
                 <Footer/>
@@ -48,7 +52,8 @@ const styles = StyleSheet.create({
     },
 
     dataContainer: {
-        flex: 6,
+        flex: 8,
+        backgroundColor: '#6ED4C8'
     },
 
     footer:{
