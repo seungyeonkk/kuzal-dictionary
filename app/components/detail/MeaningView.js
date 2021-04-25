@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import DefinitionView from './DefinitionView'
+import DefinitionView from './DefinitionView';
+import {theme} from "../../style/theme";
+
 
 const MeaningView = ({meainingInfo}) => {
-    console.log("meaningInfo  : ",meainingInfo);
 
     const [definitionInfos, setDefinitionInfos] = useState([]);
 
@@ -14,12 +15,12 @@ const MeaningView = ({meainingInfo}) => {
     return(
         <View style={styles.dataSet}>
             <View style={styles.wordClassView}>
-                <Text style={styles.wordClass}>{meainingInfo ? meainingInfo.partOfSpeech : ''}</Text>
+                <Text style={styles.wordClass}>{meainingInfo ? "* " + meainingInfo.partOfSpeech : ''}</Text>
             </View>
 
-            {definitionInfos.map((definitionInfo) => (
+            {meainingInfo.definitions.map((definitionInfo, index) => (
 
-                <DefinitionView definitionInfo={definitionInfo}/>
+                <DefinitionView definitionInfo={definitionInfo} key={index}/>
             ))}
         </View>
     )
@@ -29,13 +30,13 @@ const styles = StyleSheet.create({
 
 
     wordClassView: {
-        backgroundColor: '#eee',
 
     },
+
     wordClass: {
         fontSize: 20,
-        marginTop: 10,
-        marginLeft: 10
+        color: theme.white,
+        fontWeight: 'bold'
     },
 
     dataSet: {

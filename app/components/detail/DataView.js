@@ -3,15 +3,19 @@ import {StyleSheet, Text, View, ScrollView, TouchableOpacity} from 'react-native
 import {Audio} from "expo-av";
 import Icon from "react-native-vector-icons/Ionicons";
 import MeaningView from "./MeaningView"
-import axios from "axios";
+import {theme} from "../../style/theme";
 
 const DataView = ({wordInfo}) => {
     const [meaningInfos, setMeaningInfos] = useState([]);
-    console.log('wordInfo : ',wordInfo);
+    //console.log('wordInfo : ',wordInfo);
 
     useEffect(() => {
         setMeaningInfos(wordInfo.meanings);
     }, []);
+
+    useEffect(() => {
+        setMeaningInfos(wordInfo.meanings);
+    }, [wordInfo]);
 
     async function playSound(mp3file) {
         console.log('sound: ', mp3file);
@@ -36,17 +40,17 @@ const DataView = ({wordInfo}) => {
                     <Text style={styles.word}>{wordInfo ? wordInfo.word : ''}</Text>
                 </View>
                 <View style={styles.pronunciationView}>
-                    <Text>[{wordInfo ? wordInfo.phonetics[0].text.replace(/\//gi, "") : ''}]</Text>
+                    <Text style={styles.pronunciationText}>[{wordInfo ? wordInfo.phonetics[0].text.replace(/\//gi, "") : ''}]</Text>
                     <TouchableOpacity onPress={() =>
                         playSound(wordInfo ? wordInfo.phonetics[0].audio : '')
                     }>
-                        <Icon style={styles.pronunciationIcon} name="caret-forward-circle-outline" size={20}/>
+                        <Icon style={styles.pronunciationIcon} name="caret-forward-circle-outline" size={25}/>
                     </TouchableOpacity>
                 </View>
             </View>
 
-            {meaningInfos.map((meainingInfo) => (
-                <MeaningView meainingInfo={meainingInfo}/>
+            {wordInfo.meanings.map((meainingInfo, index) => (
+                <MeaningView meainingInfo={meainingInfo} key={index}/>
             ))}
         </View>
     )
@@ -57,8 +61,7 @@ const styles = StyleSheet.create({
 
     textView: {
         flex: 1,
-        backgroundColor: '#eee',
-        borderBottomColor: 'black',
+        borderBottomColor: theme.white,
         borderBottomWidth: 1,
     },
 
@@ -76,13 +79,22 @@ const styles = StyleSheet.create({
     },
 
     word: {
+        fontSize: 25,
+        fontWeight: "bold",
+        color: theme.white
+    },
+
+    pronunciationText: {
         fontSize: 20,
-        fontWeight: "bold"
+        color: theme.white
     },
 
     pronunciationIcon: {
-        marginLeft: 2
+        marginLeft: 6,
+        color: theme.white
+
     },
+
     dataView: {
         flex: 6,
         backgroundColor: '#6ED4C8'
