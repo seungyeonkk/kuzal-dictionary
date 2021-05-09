@@ -24,3 +24,7 @@
 
 5. 사운드 사용
  > expo install expo-av
+
+6. 앱 버전
+ > expo install expo-constants
+ > import Constants from 'expo-constants';

@@ -1,18 +1,16 @@
-import React from 'react';
+import React, {useState, useContext} from 'react';
 import {StyleSheet, Text, View, Alert} from 'react-native';
 import {theme} from "../../style/theme";
 
-
-
-const SynonymsView = ({synonymsInfo}) => {
-    console.log("동의어 ", synonymsInfo)
-
+const SynonymsView = ({synonymsInfo, search}) => {
     return(
-            <View onPress={() => console.log("동의어 클릭") }>
-                {synonymsInfo.map((synonyms, index) => (
-                    <Text style={styles.synonymsText} key={index}> {synonyms} </Text>
-                ))}
-            </View>
+        <View>
+            {synonymsInfo.map((synonyms, index) => (
+                <Text style={styles.synonymsText} key={index} onPress={ async () => {
+                    search(synonyms);
+                } }> {synonyms} </Text>
+            ))}
+        </View>
         )
 };
 

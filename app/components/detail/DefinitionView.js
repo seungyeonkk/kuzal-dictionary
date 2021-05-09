@@ -3,7 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import SynonymsView from './SynonymsView';
 import {theme} from "../../style/theme";
 
-const DefinitionView = ({definitionInfo}) => {
+const DefinitionView = ({definitionInfo, search}) => {
 
     const [synonymsInfos, setSynonymsInfos] = useState([])
 
@@ -27,7 +27,7 @@ const DefinitionView = ({definitionInfo}) => {
                     <SynonymsView synonymsInfo={synonymsInfo} key={index}/>
                 ))}*/}
 
-                <SynonymsView synonymsInfo={synonymsInfos}/>
+                <SynonymsView synonymsInfo={synonymsInfos} search={search}/>
             </View>
         </View>
 

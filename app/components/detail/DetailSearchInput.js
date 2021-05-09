@@ -19,8 +19,6 @@ const StyledSearchInput = styled.TextInput.attrs({
 
 const StyledView = styled.View`
   flex: 1;
-  border-bottom-width: 1px;
-  border-color: ${({ theme }) => theme.grey};
 `;
 
 

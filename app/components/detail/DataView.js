@@ -5,7 +5,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 import MeaningView from "./MeaningView"
 import {theme} from "../../style/theme";
 
-const DataView = ({wordInfo}) => {
+const DataView = ({wordInfo, search}) => {
     const [meaningInfos, setMeaningInfos] = useState([]);
     //console.log('wordInfo : ',wordInfo);
 
@@ -50,7 +50,7 @@ const DataView = ({wordInfo}) => {
             </View>
 
             {wordInfo.meanings.map((meainingInfo, index) => (
-                <MeaningView meainingInfo={meainingInfo} key={index}/>
+                <MeaningView meainingInfo={meainingInfo} key={index} search={search}/>
             ))}
         </View>
     )

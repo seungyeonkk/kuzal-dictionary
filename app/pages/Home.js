@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 import SearchInput from '../components/SearchInput';
 import {TouchableWithoutFeedback, Keyboard} from "react-native";
 import HomeHeader from "../components/home/HomeHeader";
-
+import Constants from 'expo-constants';
 
 const Container = styled.SafeAreaView`
     flex: 1;
@@ -17,6 +17,16 @@ const ViewContent = styled.View`
     padding: 20px
   `;
 
+const VersionContent = styled.View`
+    flex: 1;
+    align-items: center;
+  `;
+
+const VersionText = styled.Text`
+    font-size: 15px;
+    color: ${({ theme }) => theme.purple};
+  `;
+
 const InputView = styled.View`
     width: 100%;
     border-bottom-width: 1px;
@@ -26,6 +36,7 @@ const InputView = styled.View`
 const Home = ({ navigation }) => {
 
     const [word, setWord] = useState('');
+    const appVersion = Constants.manifest.version;
 
     const handleTextChange = text => {
         setWord(text);
@@ -53,6 +64,9 @@ const Home = ({ navigation }) => {
                         />
                     </InputView>
                 </ViewContent>
+                <VersionContent>
+                    <VersionText>v {appVersion} </VersionText>
+                </VersionContent>
             </Container>
         </TouchableWithoutFeedback>
     );

@@ -1,5 +1,5 @@
 import {Alert, ScrollView, StyleSheet, Text, View} from "react-native";
-import React,{useState, useEffect} from "react";
+import React,{useState, useEffect, createContext, useContext} from "react";
 import styled from "styled-components/native";
 import axios from "axios";
 import DataView from "../components/detail/DataView";
@@ -19,10 +19,9 @@ const Detail = ({route, navigation}) => {
     const word = route.params.word;
     const [wordInfos, setWordInfos] = useState([]);
     const [searchText, setSearchText] = useState('');
-
+    const [synonyms, setSynonyms] = useState('');
 
     useEffect( ()  => {
-
         setSearchText(word);
 
         async function search(word){
@@ -34,11 +33,41 @@ const Detail = ({route, navigation}) => {
 
     }, []);
 
+    useEffect( ()  => {
+
+        if(synonyms) {
+            setSearchText(synonyms);
+
+            async function search(synonyms){
+                const data = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en_US/` + synonyms).catch(error => {
+                    Alert.alert(
+                        "알림",
+                        "검색 결과가 없습니다.",
+                        [
+                            { text: "확인" }
+                        ],
+                        { cancelable: false }
+                    );
+                });
+                if(data) {
+                    setWordInfos(data.data);
+                }
+            }
+
+            search(synonyms);
+        }
+
+    }, [synonyms]);
+
+    const searchSynonyms = (text) => {
+        setSynonyms(text);
+    }
+
     const saveWord = async () => {
 
         const saveData = {
             id: Common.getCurrentMilleSeconds(),
-            text: word,
+            text: searchText,
             data: wordInfos
         }
 
@@ -89,12 +118,12 @@ const Detail = ({route, navigation}) => {
                     />
                     <IconButton style={styles.saveIcon} name="checkmark" size={30} onPressOut={saveWord}/>
                 </View>
-
             </View>
+
             <View style={styles.dataContainer}>
                 <ScrollView>
                 {wordInfos.map((wordInfo, index)=> (
-                    <DataView wordInfo={wordInfo} key={index}/>
+                    <DataView wordInfo={wordInfo} key={index} search={searchSynonyms}/>
                 ))}
                 </ScrollView>
             </View>
@@ -122,7 +151,6 @@ const styles = StyleSheet.create({
     },
 
     topContainer: {
-
         marginTop: 5,
         flexDirection: 'row',
         alignItems: 'center'

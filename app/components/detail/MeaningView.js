@@ -4,7 +4,7 @@ import DefinitionView from './DefinitionView';
 import {theme} from "../../style/theme";
 
 
-const MeaningView = ({meainingInfo}) => {
+const MeaningView = ({meainingInfo, search}) => {
 
     const [definitionInfos, setDefinitionInfos] = useState([]);
 
@@ -20,7 +20,7 @@ const MeaningView = ({meainingInfo}) => {
 
             {meainingInfo.definitions.map((definitionInfo, index) => (
 
-                <DefinitionView definitionInfo={definitionInfo} key={index}/>
+                <DefinitionView definitionInfo={definitionInfo} key={index} search={search}/>
             ))}
         </View>
     )
