@@ -20,13 +20,27 @@ const Detail = ({route, navigation}) => {
     const [wordInfos, setWordInfos] = useState([]);
     const [searchText, setSearchText] = useState('');
     const [synonyms, setSynonyms] = useState('');
+    const [hasResult, setHasResult] = useState(false);
 
     useEffect( ()  => {
         setSearchText(word);
 
         async function search(word){
-            const data = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en_US/` + word);
-            setWordInfos(data.data);
+            const data = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en_US/` + word).catch(error => {
+                Alert.alert(
+                    "알림",
+                    "검색 결과가 없습니다.",
+                    [
+                        { text: "확인" }
+                    ],
+                    { cancelable: false }
+                );
+                setHasResult(false);
+            });
+            if(data) {
+                setHasResult(true);
+                setWordInfos(data.data);
+            }
         }
 
         search(word);
@@ -48,8 +62,10 @@ const Detail = ({route, navigation}) => {
                         ],
                         { cancelable: false }
                     );
+                    setHasResult(false);
                 });
                 if(data) {
+                    setHasResult(true);
                     setWordInfos(data.data);
                 }
             }
@@ -109,14 +125,27 @@ const Detail = ({route, navigation}) => {
                         placeholder="검색어 입력"
                         value={searchText}
                         onSubmitEditing={async ()=> {
-                            const data = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en_US/` + searchText);
-                            setWordInfos(data.data);
+                            const data = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en_US/` + searchText).catch(error => {
+                                Alert.alert(
+                                    "알림",
+                                    "검색 결과가 없습니다.",
+                                    [
+                                        { text: "확인" }
+                                    ],
+                                    { cancelable: false }
+                                );
+                                setHasResult(false);
+                            });
+                            if(data) {
+                                setHasResult(true);
+                                setWordInfos(data.data);
+                            }
                         }}
                         onChangeText={(text)=> {
                             setSearchText(text);
                         }}
                     />
-                    <IconButton style={styles.saveIcon} name="checkmark" size={30} onPressOut={saveWord}/>
+                    { hasResult && <IconButton style={styles.saveIcon} name="checkmark" size={30} onPressOut={saveWord}/> }
                 </View>
             </View>
 
