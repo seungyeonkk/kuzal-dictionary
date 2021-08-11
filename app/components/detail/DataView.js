@@ -18,8 +18,8 @@ const DataView = ({wordInfo, search}) => {
     }, [wordInfo]);
 
     async function playSound(mp3file) {
+        mp3file = "https:"+mp3file;
         console.log('sound: ', mp3file);
-
         if (mp3file) {
             const sound = new Audio.Sound();
             try {
