@@ -40,7 +40,7 @@ const DataView = ({wordInfo, search}) => {
                     <Text style={styles.word}>{wordInfo ? wordInfo.word : ''}</Text>
                 </View>
                 <View style={styles.pronunciationView}>
-                    <Text style={styles.pronunciationText}>[{wordInfo.phonetics[0] ? wordInfo.phonetics[0].text.replace(/\//gi, "") : ''}]</Text>
+                    <Text style={styles.pronunciationText}>[{wordInfo.phonetics[0] ? wordInfo.phonetics[0].text : ''}]</Text>
                     <TouchableOpacity onPress={() =>
                         playSound(wordInfo.phonetics[0] ? wordInfo.phonetics[0].audio : '')
                     }>
